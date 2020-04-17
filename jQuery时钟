@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0" >
+    <meta http-equiv="X-UA-COMPATIBLE" content="ie=edge">
+    <title>css-jQuery时钟好</title>
+    <script src="js/jquery3.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            border: none;
+        }
+        .box {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            margin:100px auto;
+        }
+        .clock {
+            width: 100%;
+            height: 100%;
+            background: #3598db;
+            border-radius: 50%;
+        }
+        .nmb {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .nmb div {
+            position: absolute;
+            width: 80px;
+            height: 14px;
+            left: 20px;
+            top: 105px;
+            margin: -12px 0 0 0;
+            display: block;
+            font-weight: bold;
+            font-size: 14px;
+            transform: rotate(0deg);
+            transform-origin: right center;
+        }
+        .nmb div span {
+            position: absolute;
+            color: #fff;
+        }
+        .sec, .min, .hou {
+            position: absolute;
+            left: 50%;
+            transform-origin: center bottom;
+            z-index: 10;
+        }
+        .sec {
+            background: #d22;
+            height: 80px;
+            width: 2px;
+            margin: 0 0 0 -1px;
+            top: 20px;
+            z-index: 100;
+        }
+        .min {
+            height: 60px;
+            width: 4px;
+            margin: 0 0 0 -3px;
+            top: 41px;
+            background: #fff;
+            border-radius: 4px;
+        }
+        .hou {
+            height: 39px;
+            width: 7px;
+            margin: 0 0 0 -5px;
+            top: 60px;
+            background: #fff;
+            border-radius: 5px;
+        }
+        .keduxian div {
+            width: 98px;
+            position: absolute;
+            left: 1px;
+            top: 98px;
+            transform-origin: right center;
+            /*transform: rotateZ(-5deg);*/
+        }
+        .keduxian p {
+            background: #ff0;
+            width: 8px;
+            height: 2px;
+            border-radius: 0 2px 2px 0;
+        }
+        .yuanxin {
+            width: 10px;
+            height: 10px;
+            background: #d22;
+            border-radius: 5px;
+            top: 50%;
+            left: 50%;
+            margin: -5px 0 0 -5px;
+            position: absolute;
+            z-index: 999;
+        }
+    </style>
+
+</head>
+<body>
+<div class="box">
+    <div class="clock">
+        <div class="nmb">
+            <div><span>9</span></div>
+            <div><span>10</span></div>
+            <div><span>11</span></div>
+            <div><span>12</span></div>
+            <div><span>1</span></div>
+            <div><span>2</span></div>
+            <div><span>3</span></div>
+            <div><span>4</span></div>
+            <div><span>5</span></div>
+            <div><span>6</span></div>
+            <div><span>7</span></div>
+            <div><span>8</span></div>
+        </div>
+        <div class="keduxian"></div>
+        <div class="sec"></div>
+        <div class="min"></div>
+        <div class="hou"></div>
+        <div class="yuanxin"></div>
+    </div>
+</div>
+
+<script>
+    $(function() {
+        for (var i = 0; i < 12; i++) {
+            $('.nmb div').eq(i).css('transform', 'rotate(' + i * 30 + 'deg)');                  // 每30度就添加一个数字
+            $('.nmb div').eq(i).find('span').css('transform', 'rotate(' + i * -30 + 'deg)');
+        }
+
+        for (var j = 0; j < 60; j++) {
+            var keduxian = $('<div><p></p></div>');               // 添加细的刻度线
+            $('.keduxian').append(keduxian);
+            $('.keduxian div').eq(j).css('transform', 'rotate(' + j * 6 + 'deg)');     // 旋转--每6度就添加一个刻度线
+            if (j % 5 == 0) {
+                $('.keduxian div').eq(j).find('p').css('width', '15px').css('height', '4px');       // 插入数字旁边的刻度线
+            }
+        }
+        setInterval(nowtime, 1000);
+    });
+
+    function nowtime() {
+        var time = new Date();
+        var sec = time.getSeconds();
+        var min = time.getMinutes() + time.getSeconds() / 60;
+        var hou = time.getHours() + time.getMinutes() / 60;
+        $('.sec').css('transform', 'rotate(' + sec * 6 + 'deg)');         // 让秒针（包裹的div）旋转到当前时间秒数的刻度
+        $('.min').css('transform', 'rotate(' + min * 6 + 'deg)');
+        $('.hou').css('transform', 'rotate(' + hou * 30 + 'deg)');
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数量和总价</title>
+    <link href="css/gwc-shu.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery3.js"></script>
+</head>
+<body>
+
+<div class="addGoods">
+    <div class="goods_list">
+        <ul>
+            <li>
+                <img class="goods_img" src="images/g01.png">
+                <p>木林森男鞋</p>
+                <div class="goods_bottom">¥<span class="goods_price">198.00</span>
+                    <div class="num">
+                        <img class="minus" src="images/minus.png" />
+                        <span>0</span>
+                        <img class="plus" src="images/plus.png">
+                    </div>
+                </div>
+            </li>
+            <li><img class="goods_img" src="images/g02.png"><p>Meizu/魅族 魅蓝E2</p>
+                <div class="goods_bottom">¥<span class="goods_price">120.00</span><div class="num"><img class="minus" src="images/minus.png" /><span>0</span><img class="plus" src="images/plus.png"></div></div></li>
+            <li><img class="goods_img" src="images/g03.png"><p>清风傲骨茶仓</p>
+                <div class="goods_bottom">¥<span class="goods_price">254.00</span><div class="num"><img class="minus" src="images/minus.png" /><span>0</span><img class="plus" src="images/plus.png"></div></div></li>
+            <li><img class="goods_img" src="images/g04.png"><p>农家小米糯米锅巴</p>
+                <div class="goods_bottom">¥<span class="goods_price">22.90</span><div class="num"><img class="minus" src="images/minus.png" /><span>0</span><img class="plus" src="images/plus.png"></div></div></li>
+            <li><img class="goods_img" src="images/g05.png"><p>安德玛 UA男子 Curry3</p>
+                <div class="goods_bottom">¥<span  class="goods_price">70.00</span><div class="num"><img class="minus" src="images/minus.png" /><span>0</span><img class="plus" src="images/plus.png"></div></div></li>
+        </ul>
+        <div class="pay">共计<span class="totalNum">0</span>件
+            <p>总价¥<span class="totalPrice">0</span></p><button type="submit">去付款</button></div>
+    </div>
+</div>
+
+<script>
+
+$(function(){
+    //点击增加按钮触发事件
+    $(".plus").click(function(){
+        var num = $(this).parent().children("span");
+        //var num = $(this).siblings("span");          //可以直接找到兄弟节点
+        //单品数量增加
+        num.text(parseInt(num.text())+1);
+        //商品总数增加
+        var totalNum = parseInt($(".totalNum").text());
+        totalNum++
+        $(".totalNum").text(totalNum);
+        //计算总价
+        var goods_price = parseInt($(this).parent().parent().children(".goods_price").text());
+        $(".totalPrice").text(parseInt($(".totalPrice").text())+goods_price);
+    });
+
+    //点击减少按钮触发事件
+    $(".minus").click(function(){
+        var num = $(this).parent().children("span");
+        if(parseInt(num.text())){
+            num.text(parseInt(num.text())-1);
+            var totalNum = parseInt($(".totalNum").text());
+            totalNum--
+            $(".totalNum").text(totalNum);
+            var goods_price = parseInt($(this).parent().parent().children(".goods_price").text());
+            $(".totalPrice").text(parseInt($(".totalPrice").text())-goods_price);
+        } else{
+            num.text("0");
+        }
+    });
+});
+
+</script>
+
+</body>
+</html>

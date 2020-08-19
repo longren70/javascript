@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-compatible" content="ie=edge">
+    <title>淘宝轮播图</title>
+    <script src="js/jquery3.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            background: #ecfaff;
+        }
+        li {
+            list-style: none;
+        }
+        img {
+            border: none;
+        }
+        .play {
+            width: 375px;
+            height: 128px;
+            overflow: hidden;
+            position: relative;
+            margin: 50px auto 0;
+        }
+        ol {
+            position: absolute;
+            right: 5px;
+            bottom: 5px;
+            z-index: 2;
+        }
+        ol li {
+            float: left;
+            width: 18px;
+            height: 18px;
+            text-align: center;
+            margin-right: 3px;
+            display: inline;
+            cursor: pointer;
+            background: #fcf2cf;
+            border: 1px solid #f47500;
+        }
+        .active {
+            font-weight: bold;
+            color: #fff;
+            background: #ffb442;
+            position: relative;
+            bottom: 1px;
+        }
+        ul {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        ul li {
+            width: 375px;
+            height: 128px;
+            float: left;
+        }
+        ul img {
+            float: left;
+            width: 375px;
+            height: 128px;
+        }
+
+    </style>
+
+    <script>
+        $(function(){
+            var aBtns = $("#play ol li");          // 将jQuery对象赋值给变量，这样每次要用到时都用该变量
+            var oUl = $("#play ul");
+            var aLis = oUl.find("li");
+            var iNow = 0;       // 当前图片的下标
+            var timer = null;
+
+            var aBtns2 = $("#play2 ol li");
+            var oUl2 = $("#play2 ul");
+
+            aBtns.click(function(){
+                iNow = $(this).index();
+                tab();
+                //tab2();
+            });
+
+            aBtns2.click(function(){
+                iNow = $(this).index();
+                //tab();
+                tab2();
+            });
+
+            $("#play, #play2").mouseenter(function(){
+                clearInterval(timer);                  // 鼠标移入时清除定时器--图片静止不动
+            }).mouseleave(function(){
+                timer = setInterval(function(){
+                    iNow++;
+                    tab();
+                    tab2();
+                }, 2000);
+            });
+
+            // 启动一个定时器
+            timer = setInterval(function(){
+                iNow++;
+                tab();
+                tab2();
+            }, 2000);
+
+            // 定义一个函数tab ---- 向上移动
+            function tab(){
+                aBtns.attr("class", "").eq(iNow).attr("class", "active");
+                // 判断是否为第一张图片
+                if(iNow == aBtns.length){       // aBtns.length 视频里用的是 aBtns.size() ----这样用报错--size()函数不是tab函数里的函数
+                    aBtns.eq(0).attr("class", "active");
+                }
+                oUl.animate({
+                    top: -128 * iNow
+                }, 500, function(){
+                    // 判断是否最后一张图片
+                    if(iNow == aBtns.length){     // aBtns.length 视频里用的是 aBtns.size() ----这样用报错--size()函数不是tab函数里的函数
+                        iNow = 0;
+                        oUl.css("top", 0);
+                    }
+                });
+            }
+
+            // 定义一个函数tab2 ---- 向左移动
+            function tab2(){
+                aBtns2.attr("class", "").eq(iNow).attr("class", "active");
+                // 判断是否为第一张图片
+                if(iNow == aBtns2.length){       // aBtns.length 视频里用的是 aBtns.size() ----这样用报错--size()函数不是tab函数里的函数
+                    aBtns2.eq(0).attr("class", "active");
+                }
+                oUl2.animate({
+                    left: -375 * iNow
+                }, 500, function(){
+                    // 判断是否最后一张图片
+                    if(iNow == aBtns2.length){     // aBtns.length 视频里用的是 aBtns.size() ----这样用报错--size()函数不是tab函数里的函数
+                        iNow = 0;
+                        oUl2.css("left", 0);
+                    }
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="play" id="play">
+        <ol>
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ol>
+        <ul>
+            <!-- 轮播图的工作原理：将第一种图片添加到最后一张的后面，党最后一张图片动画结束的时候，直接切回到第一张 -->
+            <li><a href="http://www.baidu.com"><img src="images/t01.jpg" alt="广告"> </a> </li>
+            <li><a href="http://www.baidu.com"><img src="images/t02.jpg" alt="广告"> </a> </li>
+            <li><a href="http://www.baidu.com"><img src="images/t03.jpg" alt="广告"> </a> </li>
+            <li><a href="http://www.baidu.com"><img src="images/t04.jpg" alt="广告"> </a> </li>
+            <li><a href="http://www.baidu.com"><img src="images/t05.jpg" alt="广告"> </a> </li>
+            <li><a href="http://www.baidu.com"><img src="images/t01.jpg" alt="广告"> </a> </li>
+        </ul>
+    </div>
+
+    <div class="play" id="play2">
+        <ol>
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ol>
+        <ul>
+            <!-- 轮播图的工作原理：将第一种图片添加到最后一张的后面，党最后一张图片动画结束的时候，直接切回到第一张 -->
+            <li><a href="http://www.baidu.com"><img src="images/t01.jpg" alt="广告"> </a> </li>
+            <li><a href="http://www.baidu.com"><img src="images/t02.jpg" alt="广告"> </a> </li>
+            <li><a href="http://www.baidu.com"><img src="images/t03.jpg" alt="广告"> </a> </li>
+            <li><a href="http://www.baidu.com"><img src="images/t04.jpg" alt="广告"> </a> </li>
+            <li><a href="http://www.baidu.com"><img src="images/t05.jpg" alt="广告"> </a> </li>
+            <li><a href="http://www.baidu.com"><img src="images/t01.jpg" alt="广告"> </a> </li>
+        </ul>
+    </div>
+</body>
+</html>

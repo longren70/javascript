@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>手风琴之王者荣耀</title>
+    <style>
+        ul {
+            list-style: none;
+        }
+        
+        .king {
+            width: 800px;
+            height: 70px;
+            background: #360;
+            margin: 50px auto;
+        }
+        
+        .king ul {
+            margin: 2px 10px;
+            height: 70px;
+            top: 50%;
+        }
+        
+        .king li.current {
+            width: 224px;
+        }
+        
+        .king li.current .big {
+            display: block;
+            float: left;
+        }
+        
+        .king li.current .small {
+            display: none;
+        }
+        
+        .king li img.small {
+            display: block;
+            float: left;
+        }
+        
+        .big {
+            width: 224px;
+            display: none;
+        }
+        
+        .small {
+            width: 70px;
+            height: 70px;
+            float: left;
+            border-radius: 5px;
+        }
+    </style>
+    <script src="js/jquery3.js"></script>
+
+    <script>
+        $(function() {
+            $(".king li").mouseover(function() { // 可以用 hover() mouseenter()
+                // 1. 当前的li 宽度变为224px
+                $(this).stop().animate({
+                    width: 224
+                }).find(".small").stop().fadeOut().siblings(".big").stop().fadeIn();
+                $(this).siblings("li").stop().animate({
+                    width: 70
+                }).find(".small").stop().fadeIn().siblings(".big").stop().fadeOut();
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <div class="king">
+        <ul>
+            <li class="current">
+                <a href="javascript:;">
+                    <img src="images/ws01.png" alt="" class="small">
+                    <img src="images/wb01.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <img src="images/ws02.png" alt="" class="small">
+                    <img src="images/wb02.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <img src="images/ws03.png" alt="" class="small">
+                    <img src="images/wb03.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <img src="images/ws04.png" alt="" class="small">
+                    <img src="images/wb04.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <img src="images/ws05.png" alt="" class="small">
+                    <img src="images/wb05.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <img src="images/ws06.png" alt="" class="small">
+                    <img src="images/wb06.png" alt="" class="big">
+                </a>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <img src="images/ws07.png" alt="" class="small">
+                    <img src="images/wb07.png" alt="" class="big">
+                </a>
+            </li>
+        </ul>
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-compatible" content="ie=edge">
+    <title>图片放大镜</title>
+    <script src="js/jquery3.js"></script>
+    <style>
+        #small {
+            width: 256px;              /* 大图片的宽度 2048 除以 8 */
+            height: 192px;            /* 大图片的高度 1536 除以 8 */
+            border: 1px solid black;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+        }
+        #small img {
+            width: 100%;
+            height: 100%;
+        }
+        #big {
+            display: none;
+            overflow: hidden;
+            width: 620px;        /* 这样的宽高正好不会露出白色多余的部分，但是应该是什么比例得出这样的值呢？？ */
+            height: 610px;
+            border: 1px solid black;
+            position: absolute;
+            left: 400px;
+            top: 100px;
+        }
+        #big img {
+            width: 2048px;
+            height: 1536px;
+            position: absolute;
+        }
+        #mark {
+            display: none;
+            width: 80px;               /* 遮罩层的宽度 */
+            height: 80px;
+            background: white;
+            position: absolute;
+            opacity: 0.5;
+            filter: alpha(opacity=50)
+        }
+    </style>
+</head>
+<body>
+    <div id="small">
+        <img src="images/f06.jpg">
+        <div id="mark"></div>
+    </div>
+    <div id="big">
+        <img src="images/f06.jpg">
+    </div>
+
+    <script>
+        $(function(){
+            $("#small").mouseenter(function(){
+                $("#mark, #big").show();
+            }).mouseleave(function(){
+                $("#mark, #big").hide();
+            }).mousemove(function(ev){
+                var l = ev.pageX - $(this).offset().left - 40;     // 减40 是让鼠标在遮罩层居中（遮罩层的宽高为80）
+                var t = ev.pageY - $(this).offset().top - 40;
+                // 限制遮罩层出界
+                if(l <= 0){
+                    l = 0;
+                }
+                if(l >= 176){        // 这个176 的数值小图片的宽度减去遮罩层的宽度
+                    l  = 176;
+                }
+                if(t <= 0){
+                    t = 0;
+                }
+                if(t >= 112){         // 这个112 的数值小图片的高度减去遮罩层的高度
+                    t = 112;
+                }
+                // 改变遮罩层的位置
+                $("#mark").css({
+                    left: l,
+                    top: t
+                });
+
+                // 同时改变放大图片的位置，四倍于遮罩层的位置，注意是反方向的
+                $("#big img").css({
+                    left: -8 * l,           // 这个 8 倍的数值是根据大图和小图的宽度来决定，否则会显示不全，或者不到位
+                    top: -8 * t            // 这个倍数要和小图片缩小显示的倍数一致，否则会有不能全区域放大的问题
+                });
+            });
+        });
+    </script>
+</body>
+</html>

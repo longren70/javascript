@@ -1,0 +1,61 @@
+
+body{
+    margin: 0 auto;
+    width: 960px;
+}
+.goods_list ul li{
+    background-color: #FFF;
+    border-bottom: 1px solid #CCC;
+    height: 100px;
+    padding: 40px;
+}
+.goods_img{
+    float: left;
+    border: 1px solid #CCC;
+    margin-right: 20px;
+    width: 80px;
+    height: 80px;
+}
+.goods_bottom{
+    padding-top: 52px;
+}
+.goods_bottom .price{
+    color: #F02028;
+}
+.goods_list .num{
+    float: right;
+}
+.goods_list .num span{
+    padding: 0 30px;
+}
+.pay {
+    padding-left: 30px;
+    background-color: #FFF;
+    width: 100%;
+    height: 166px;
+    position: fixed;bottom: 0;
+}
+.pay .totalNum{
+    color: #F02028;
+}
+.pay p{
+    color: #F02028;
+}
+.pay button{
+    position: fixed;bottom:0;right: 0;
+    width: 300px;
+    height: 166px;
+    background-color: #FF3334;
+    color: #FFF;
+    font-size: 45px;
+
+}
+
+@keyframes rotate {
+    from{
+        ;
+    }
+    to{
+        rotation: 180deg;
+         }
+}

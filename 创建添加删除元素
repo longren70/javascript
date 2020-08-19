@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创建添加删除元素</title>
+
+    <script src="js/jquery3.js"></script>
+</head>
+<body>
+
+<ul>
+    <li> 我是原来的 li </li>
+</ul>
+
+<script>
+    $(function(){
+        // 1、 创建元素
+        var li = $("<li> 我是后来用append()创建的li， 我添加到了后面，和ul是父子关系 </li>");
+        var li2 = $("<li> 我是后来prepend()创建的li，我添加到来前面，和ul是父子关系</li>");
+        // 2、 添加元素
+        // （1）、 内部添加元素
+        $("ul").append(li);   // 内部添加，且放到后面
+        $("ul").prepend(li2);  // 内部添加，且放到前面
+
+        // （2）、 外部添加元素
+        var div = $("<div>我是后来用before()添加到ul元素的外部的（前面），和ul是兄弟关系</div>")
+        $("ul").before(div);
+
+        var div2 = $("<div>我是后来用after()添加到ul元素的外部的(后面)，和ul是兄弟关系</div>")
+        $("ul").after(div2);
+
+        // 4、 删除元素
+        //$ ("ul").remove();    // 可以输出匹配到的元素---- 是自杀
+        //$ ("ul").empty();      // 清空ul元素中的元素内容
+        //$ ("ul").html("");      // 清空ul元素中的元素内容---注意要后引号,否则就是获取HTML
+
+    });
+
+</script>
+
+
+</body>
+</html>

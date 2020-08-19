@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-compatible" content="ie=edge">
+    <title>jQuery_cookie的使用</title>
+    <script src="js/jquery3.js"></script>
+    <script src="js/jquery.cookie.js"></script>
+    <script>
+        /*
+        * jquery 中cookie的用法：
+        * 1.取值----- $.cookie(name)
+        * 2.设置name和value----- $.cookie(name, value)
+        * 3.设置name和value，加入选项----- $.cookie(name, value, { expires: 7, raw: true})
+        * 4.删除cookie------ $.coookie(name, null)
+        * */
+        $.cookie("变种人", "X教授");
+        $.cookie("变种人", "X教授", {
+            expires: 7,
+            raw: true         // raw的默认值是false，表示value之要进行编码，true不要编码
+        });
+        $.cookie("赛亚人", "贝吉塔", {
+            expires: 30
+        });
+        $.cookie("海贼王", "路飞", {
+            expires: 333
+        });
+
+        alert($.cookie("变种人"));         // 得到 X教授
+        alert($.cookie("赛亚人"));         // 得到 贝吉塔
+        alert($.cookie("海贼王"));         // 得到 路飞
+
+        $(function(){
+            $("#btn1").click(function(){
+                $.cookie("赛亚人", null);      // 删除"赛亚人"的cookie
+                alert($.cookie("赛亚人"));
+            });
+        });
+
+    </script>
+</head>
+<body>
+<!-- 在jQuery中没有把cookie一起封装，而是单独封装了jquery.cookie.js  所以在引入jquery3.js 之后再引入-->
+
+<button id="btn1">删除cookie</button>
+
+</body>
+</html>

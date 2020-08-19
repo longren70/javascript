@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>动画返回顶部</title>
+    <script src="js/jquery3.js"></script>
+    <style>
+        body{
+            height: 2300px;
+        }
+        .back{
+            position: fixed;
+            width: 80px;
+            height: 100px;
+            background: red;
+            right: 160px;
+            bottom: 50px;
+            display: none;
+            cursor: pointer;
+        }
+        .box{
+            width: 800px;
+            height:600px;
+            background: skyblue;
+            margin: 400px auto;
+        }
+    </style>
+    <script>
+        $(function(){
+            $(document).scrollTop(100);          // 可以直接设置距离顶部的值
+            var boxTop = $(".box").offset().top;
+            $(window).scroll(function(){
+                console.log($(document).scrollTop());
+                if($(document).scrollTop() >= boxTop){
+                    $(".back").fadeIn();
+                }else {
+                    $(".back").fadeOut();
+                }
+            });
+            $(".back").click(function(){
+                //$(document).scrollTop(0);             // 这个是直接跳到顶部，没有过度效果
+                $("body,html").stop().animate({        // 这里要用body和html，而不是document
+                    scrollTop: 0
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+<div class="back">返回顶部</div>
+<div class="box"></div>
+</body>
+</html>

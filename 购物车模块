@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>购物车模块</title>
+    <link rel="stylesheet" type="text/css" href="css/gouwuche.css">
+    <script type="text/javascript" src="js/jquery3.js"></script> <!-- 不能写成type="javascript"，否则无效。直接不懈这个type就好了-->
+    <script  src="js/gouwuche.js"></script>
+</head>
+
+<body>
+    <!-- 购物车注意核心区域 -->
+<div class="cart-wrap">
+    <!-- 头部全选模块 -->
+    <div class="cart-thead">
+        <div class="t-checkall">
+            <input type="checkbox" name="" id="" class="checkall">全选
+        </div>
+        <div class="t-goods">商品信息</div>
+        <div class="t-price">单价</div>
+        <div class="t-num">数量</div>
+        <div class="t-sum">小计</div>
+        <div class="t-action">操作</div>
+    </div>
+
+    <!-- 商品详细模块 -->
+    <div class="cart-item-list">
+        <div class="cart-item">
+            <div class="p-checkbox">
+                <input class="j-checkbox" type="checkbox" name="yi-checked">
+            </div>
+            <div class="p-goods">
+                <div class="p-img">
+                    <img src="images/g01.png" alt="">
+                </div>
+                <div class="p-msg">
+                    <a href=""> 加长哈伦裤女宽松萝卜休闲裤女裤2020年新款春季高腰卡其老爹裤子</a>
+                </div>
+            </div>
+            <div class="p-price">￥118.00</div>
+            <div class="p-num">
+                <div class="quantity-form">
+                    <a href="javascript:;" class="decrement">-</a>
+                    <input class="itxt" type="text" value="1">
+                    <a href="javascript:;" class="increment">+</a>
+                </div>
+            </div>
+            <div class="p-sum">￥118.00</div>
+            <div class="p-action"><a href="javascript:;">删除</a> </div>
+        </div>
+        <div class="cart-item">
+            <div class="p-checkbox">
+                <input class="j-checkbox" type="checkbox" name="yi-checked" >
+            </div>
+            <div class="p-goods">
+                <div class="p-img">
+                    <img src="images/g02.png" alt="">
+                </div>
+                <div class="p-msg">
+                    <a href=""> 半袖笑脸丅恤2020年新款夏季古着感少女t恤学生高腰短款上衣ins潮</a>
+                </div>
+            </div>
+            <div class="p-price">￥89.00</div>
+            <div class="p-num">
+                <div class="quantity-form">
+                    <a href="javascript:;" class="decrement">-</a>
+                    <input class="itxt" type="text" value="1">
+                    <a href="javascript:;" class="increment">+</a>
+                </div>
+            </div>
+            <div class="p-sum">￥89.00</div>
+            <div class="p-action"><a href="javascript:;">删除</a> </div>
+        </div>
+        <div class="cart-item">
+            <div class="p-checkbox">
+                <input class="j-checkbox" type="checkbox" name="yi-checked">
+            </div>
+            <div class="p-goods">
+                <div class="p-img">
+                    <img src="images/g04.png" alt="">
+                </div>
+                <div class="p-msg">
+                    <a href=""> 羊毛短外套女2019秋冬新款连帽波点小香风外搭宽松显瘦羊绒开衫女</a>
+                </div>
+            </div>
+            <div class="p-price">￥298.00</div>
+            <div class="p-num">
+                <div class="quantity-form">
+                    <a href="javascript:;" class="decrement">-</a>
+                    <input class="itxt" type="text" value="1">
+                    <a href="javascript:;" class="increment">+</a>
+                </div>
+            </div>
+            <div class="p-sum">￥298.00</div>
+            <div class="p-action"><a href="javascript:;">删除</a> </div>
+        </div>
+        <div class="cart-item">
+            <div class="p-checkbox">
+                <input class="j-checkbox" type="checkbox" name="yi-checked">
+            </div>
+            <div class="p-goods">
+                <div class="p-img">
+                    <img src="images/g05.png" alt="">
+                </div>
+                <div class="p-msg">
+                    <a href=""> 春秋季新款女装复古妈妈绣花五分中袖牛仔上衣七分阔腿裤两件套装</a>
+                </div>
+            </div>
+            <div class="p-price">￥193.00</div>
+            <div class="p-num">
+                <div class="quantity-form">
+                    <a href="javascript:;" class="decrement">-</a>
+                    <input class="itxt" type="text" value="1">
+                    <a href="javascript:;" class="increment">+</a>
+                </div>
+            </div>
+            <div class="p-sum">￥193.00</div>
+            <div class="p-action"><a href="javascript:;">删除</a> </div>
+        </div>
+    </div>
+
+    <!-- 商品结算模块 -->
+    <div class="cart-floatbat">
+        <div class="select-all">
+            <input class="checkall" type="checkbox" name="">全选
+        </div>
+        <div class="opration">
+            <a href="javascript:;" class="remove-batch">删除选中的商品</a>
+            <a href="javascript:;" class="clear-all">清空购物车</a>
+        </div>
+        <div class="toobar-right">
+            <div class="amount-sum">已经选<em> 0 </em>件商品</div>
+            <div class="price-sum">总价：<em> ￥0.00 </em></div>
+            <div class="btn-area"><a href=""> 去结算 </a></div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

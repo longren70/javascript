@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CheckBox是否被选中</title>
+    <script src="js/jquery3.js"></script>
+</head>
+<body>
+
+<input type="text" name="first" id="first"><br>
+<input type="text" name="second" id="second"><br>
+<input type="checkbox" name="cb" id="hide" value="1"><span id="v0">隐藏第三个文本框</span><br>
+<input type="checkbox" name="cb" id="ml" value="2"><span id="v1">变长第一个文本框</span><br>
+<input type="text" name="third" id="third">
+
+
+<script>
+    var t1 = $("#first");
+    var t2 = $("#second");
+    var t3 = $("#third");
+    $(document).ready(function(e) {
+        t2.mousedown(function(e) {//t2被鼠标按下后
+            var str = t1.val();//获得t1的文本信息
+            t2.val(str);//加载入t2的文本
+        });
+        $("#hide").click(function(e) {
+            //var flag = $(this).is(":checked");
+            var flag = $(this).prop("checked");
+            t3.toggle();//动态显示隐藏文本框
+            if(flag)
+                $("#v0").html("显示第三个文本框");
+            else
+                $("#v0").html("隐藏第三个文本框");
+        });
+        $("#ml").click(function(e) {
+            var flag2 = $(this).prop("checked");
+            if(flag2){
+                t1.css('width','300px');
+                $("#v1").html("变短第一个文本框");
+            }
+            else{
+                t1.css('width','169px');
+                $("#v1").html("变长第一个文本框");
+            }
+        });
+    });
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   <!-- 要做css的动画，这两个meta就必须要有 -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>城市热点图</title>
+    <style>
+        .map{
+            position: relative;
+            width: 650px;
+            height: 550px;
+            border:1px solid red;
+            margin: 100px auto;
+            background: url("./images/ditu3.png") no-repeat;
+        }
+        .city{
+            position: absolute;
+            top:200px;
+            right:145px;
+        }
+        .beijing{
+            top:200px;
+            right:145px;
+        }
+        .shanghai{
+            top:320px;
+            right:73px;
+        }
+        .guangzhou{
+            top:445px;
+            right:165px;
+        }
+        .dotted{
+            position: absolute;
+            top:50%;
+            right:50%;
+            transform: translate(-50%, -50%);
+            /* 上面四句代码是保证小圆点在父级div里面水平和垂直居中  */
+            width: 8px;
+            height: 8px;
+            background-color: #09f;
+            border-radius: 50%;
+        }
+        .city div[class^="pulse"]{        /* 类选择器：表示以pulse开头的类 ， 权重是city=10 div=1 pulse=10 总21 */
+            position: absolute;
+            top:50%;
+            right:50%;
+            transform: translate(-50%, -50%);
+            /* 上面四句代码是保证小波纹在父级div里面水平和垂直居中，放大后就会中心向四周发散  */
+            width: 8px;
+            height: 8px;
+            box-shadow: 0 0 12px #009dfd;     /* 阴影---参数是 水平  垂直  大小  颜色  */
+            border-radius: 50%;
+            animation: pulse 1.2s linear infinite;
+        }
+        .city div.pulse2{      /* 增加 .city div 这两个的意义是为了增加pulse2的权重，以达到和pulse组相等  10+1+10=21 */
+            animation-delay: 0.4s;
+        }
+        .city div.pulse3{              /* 增加 .city div 这两个的意义是为了增加pluse3的权重，以达到和pluse组相等 */
+            animation-delay: 0.8s;
+        }
+        @keyframes pulse {
+            0%{
+                /* 这里不写为空，就是原始尺寸 */
+            }
+            70%{
+                /* 这里不用 transform: scale(3);是因为scale会让阴影也变大 */
+                width:40px;
+                height:40px;
+                opacity: 1;
+            }
+            100%{
+                width:70px;
+                height:70px;
+                opacity: 0;
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div class="map">
+    <div class="city beijing">北京
+        <div class="dotted"></div>
+        <div class="pulse1"></div>
+        <div class="pulse2"></div>
+        <div class="pulse3"></div>
+    </div>
+    <div class="city guangzhou">广州
+        <div class="dotted"></div>
+        <div class="pulse1"></div>
+        <div class="pulse2"></div>
+        <div class="pulse3"></div>
+    </div>
+    <div class="city shanghai">上海
+        <div class="dotted"></div>
+        <div class="pulse1"></div>
+        <div class="pulse2"></div>
+        <div class="pulse3"></div>
+    </div>
+</div>
+
+</body>
+</html>

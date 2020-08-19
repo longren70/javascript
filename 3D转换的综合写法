@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   <!-- 要做css的动画，这两个meta就必须要有 -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>3d综合写法</title>
+    <style>
+        /* 动画命名必须以 @keyframes 关键帧开始，名字可以自定义。 0%  100%  两者等价于 from  to   */
+        @keyframes move {
+            0%{
+                transform: translate(0, 0);         /* 参数是之x、y轴的值 */
+            }
+            25%{
+                transform: translate(1000px, 0);
+            }
+            50%{
+                transform: translate(1000px, 300px);
+            }
+            75%{
+                transform: translate(0px, 300px);
+            }
+            100%{
+                transform: translate(0, 0);
+            }
+        }
+        .box1{
+            width: 100px;
+            height: 100px;
+            border:1px solid red;
+            /* margin: 100px auto;                注意：如果有这个属性的话，就要调整 0% 等的位置参数x轴和y轴的值  */
+            background: green;
+
+            /*  animation-name: move;                 动画名字----必须参数 */
+            /*  animation-duration: 2s;               动画持续时间----必须参数  */
+            /*  animation-timing-function: linear;             动画的速度曲线 默认是ease*/
+            /*  animation-delay: 1s;                     动画延时开始*/
+            /* animation-iteration-count: infinite;              动画重复次数*/
+            /*  animation-direction: normal;                       动画是否反方向播放  alternate（跑马灯，反方向）*/
+            /*  animation-fill-mode: forwards;             动画保持结束状态,默认的是 backwards 回到起始位置*/
+            /* 下面是简写方式 */
+            animation: move 5s linear 0s infinite forwards;
+        }
+        .box1:hover{
+            animation-play-state: paused;             /* 动画是否允许或暂停 默认是running， 暂停是paused */
+        }
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+<div class="box1"></div>
+
+
+</body>
+</html>

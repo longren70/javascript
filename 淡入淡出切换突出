@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>淡入淡出切换</title>
+    <style>
+        body{width:1000px; margin:10px auto;}
+        ul{list-style: none;}
+        #aaa{width:150px; height:300px;background:#f0f;}
+        .wrap li{float: left;margin:5px 10px;}
+        .wrap li img{ width:200px;height:200px;}
+    </style>
+    <script src="js/jquery3.js"></script>
+</head>
+<body>
+
+<button>淡入效果</button>
+<button>淡出效果</button>
+<button>淡入淡出切换</button>
+<button>修改透明度</button>
+
+<div id="aaa">我是用于变化的div</div>
+
+<div>将鼠标移入图片后突出显示（高亮）</div>
+<div class="wrap">
+    <ul>
+        <li>
+            <a href=""><img src="images/g01.png" alt="我高亮显示"> </a>
+        </li>
+        <li>
+            <a href=""><img src="images/g02.png" alt="我高亮显示"> </a>
+        </li>
+        <li>
+            <a href=""><img src="images/g03.png" alt="我高亮显示"> </a>
+        </li>
+        <li>
+            <a href=""><img src="images/g04.png" alt="我高亮显示"> </a>
+        </li>
+        <li>
+            <a href=""><img src="images/g05.png" alt="我高亮显示"> </a>
+        </li>
+        <li>
+            <a href=""><img src="images/g04.png" alt="我高亮显示"> </a>
+        </li>
+        <li>
+            <a href=""><img src="images/g05.png" alt="我高亮显示"> </a>
+        </li>
+        <li>
+            <a href=""><img src="images/g04.png" alt="我高亮显示"> </a>
+        </li>
+    </ul>
+</div>
+
+<script>
+    // 语法：show() hide() toggle() 三个函数的括号内都可以传入可选参数---[speed,[easing],[fn]]
+    // speed--毫秒，easing--默认swing，还可以是linear， fn--回调函数
+    $(function(){
+        $("button").eq(0).click(function(){
+            $("#aaa").stop().fadeIn(1000);                        // 注意：stop()方法必须写到动画方法的前面
+        });
+        $("button").eq(1).click(function(){
+            $("#aaa").stop().fadeOut(2000);                          // 注意：stop()方法必须写到动画方法的前面
+        });
+        $("button").eq(2).click(function(){
+            $("#aaa").stop().fadeToggle(1000);
+        });
+        $("button").eq(3).click(function(){
+            $("#aaa").stop().fadeTo(1000, 0.4);              // 这个的参数--速度和透明度必须写
+        });
+
+        //  鼠标移入hover()----高亮显示
+        $(".wrap li").hover(function(){
+            $(this).siblings().stop().fadeTo(100,0.3);
+            //alert(this);
+        }, function(){
+            $(this).siblings().stop().fadeTo(100,1);
+        });
+
+//        $(".wrap li").mouseover(function(){
+//           var index = $(this).index();
+//            //alert(index);                          // 这里可能得到所有的索引号
+//            $(this).eq(index).siblings().fadeTo(100,0.4);     // 这里只能得到一个个索引号，为什么？？？
+//            alert(this);
+//        });
+//        $(".wrap li").mouseout(function(){
+//            var index = $(this).index();
+//            $(this).eq(index).siblings().fadeTo(100,1);
+//        });
+    });
+</script>
+
+</body>
+</html>

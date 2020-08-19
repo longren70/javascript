@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>复仇者联盟3D</title>
+    <style>
+        html{ perspective: 800px;}
+        .cube{
+            width:200px;
+            height:200px;
+            /*background: #fba;*/
+            margin:100px 200px;
+            transform-style: preserve-3d;
+            /*transform: rotateX(45deg) rotateZ(45deg);*/
+            animation: rotate 20s infinite linear;      /* 动画效果：旋转 20秒 无限次 匀速*/
+        }
+        .cube > div{
+            width:200px;
+            height: 200px;
+            opacity: 0.9;
+            position: absolute;
+        }
+        img{
+            vertical-align: top;
+            width:200px;
+            height: 200px;
+        }
+        .box1{
+            transform: rotateY(90deg) translateZ(100px);
+        }
+        .box2{
+            transform: rotateY(90deg) translateZ(-100px);
+        }
+        .box3{
+            transform: rotateX(90deg) translateZ(100px);
+        }
+        .box4{
+            transform: rotateX(90deg) translateZ(-100px);
+        }
+        .box5{
+            transform: rotateY(0deg) translateZ(100px);
+        }
+        .box7{
+            transform: rotateY(180deg) translateZ(100px);
+        }
+        @keyframes rotate {          /* 动画关键帧：旋转*/
+            from{
+                transform: rotateX(0deg) rotateZ(0deg);
+            }
+            to{
+                transform: rotateX(360deg) rotateZ(360deg);   /* 视频中的括号里用的是 1trun */
+            }
+        }
+
+    </style>
+</head>
+<body>
+<div class="cube">
+    <div class="box1">
+        <img src="images/fc01.png">
+    </div>
+    <div class="box2">
+        <img src="images/fc02.png">
+    </div>
+    <div class="box3">
+        <img src="images/fc03.png">
+    </div>
+    <div class="box4">
+        <img src="images/fc04.png">
+    </div>
+    <div class="box5">
+        <img src="images/fc05.png">
+    </div>
+    <div class="box7">
+        <img src="images/fc07.png">
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+@total-width:750;       /* 定义一个总宽度 */
+
+.w{
+    width: 693/40rem;          /* 定义一个宽度 */
+    margin: 0 auto;
+}
+
+/* 设置根元素*/
+html{
+    font-size: 100vw/@total-width * 40;
+}
+

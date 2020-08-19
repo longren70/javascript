@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>淘宝精品服饰</title>
+    <style>
+
+    </style>
+    <script src="js/jquery3.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+    <p>这些图片的css没有写，应该是第一张显示，其他是隐藏</p>
+    <ul id="left">
+        <li><a href="">图片1</a> </li>
+        <li><a href="">图片2</a> </li>
+        <li><a href="">图片3</a> </li>
+        <li><a href="">图片4</a> </li>
+        <li><a href="">图片5</a> </li>
+        <li><a href="">图片6</a> </li>
+        <li><a href="">图片7</a> </li>
+    </ul>
+    <div id="content">
+        <div>
+            <a href=""><img src="images/g01.png" width="200" height="200"> </a>
+        </div>
+        <div>
+            <a href=""><img src="images/g02.png" width="200" height="200"> </a>
+        </div>
+        <div>
+            <a href=""><img src="images/g03.png" width="200" height="200"> </a>
+        </div>
+        <div>
+            <a href=""><img src="images/g04.png" width="200" height="200"> </a>
+        </div>
+        <div>
+            <a href=""><img src="images/g05.png" width="200" height="200"> </a>
+        </div>
+        <div>
+            <a href=""><img src="images/g02.png" width="200" height="200"> </a>
+        </div>
+        <div>
+            <a href=""><img src="images/g03.png" width="200" height="200"> </a>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    $(function(){
+        $("#left li").mouseover(function(){
+            var index = $(this).index();
+            //$("#content div").eq(index).show()
+            //$("#content div").eq(index).siblings().hide()
+            // 链式编程
+            $("#content div").eq(index).show().siblings().hide()
+        });
+    });
+
+</script>
+
+
+</body>
+</html>

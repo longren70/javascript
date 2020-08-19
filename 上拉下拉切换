@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>上拉下拉切换</title>
+    <style>
+        #aaa{width:150px; height:300px;background:#f0f;}
+    </style>
+    <script src="js/jquery3.js"></script>
+</head>
+<body>
+
+<button>上拉效果</button>
+<button>下拉效果</button>
+<button>切换</button>
+
+<div id="aaa">我是用于变化的div</div>
+
+<script>
+    // 语法：slideDown() slideUp() slideToggle() 三个函数的括号内都可以传入可选参数---[speed,[easing],[fn]]
+    // speed--毫秒，easing--默认swing，还可以是linear， fn--回调函数
+    $(function(){
+        $("button").eq(1).click(function(){
+            $("#aaa").stop().slideDown();             // 注意：stop()方法必须写到动画方法的前面
+        });
+        $("button").eq(0).click(function(){
+            $("#aaa").stop().slideUp();
+        });
+        $("button").eq(2).click(function(){
+            $("#aaa").stop().slideToggle();
+        });
+
+    });
+</script>
+
+</body>
+</html>

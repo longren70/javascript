@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1.0" >
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>表盘时钟</title>
+    <script src="js/jquery3.js"></script>
+
+    <style>
+        .clock{
+            width:400px;
+            height: 400px;
+            margin:100px 100px;
+            border-radius: 50%;
+            position: relative;
+            border:10px solid black;
+            /*background-image: url("./images/sz3.png");*/
+            background-image: url("./images/sz2.png");
+            background-size: cover;
+        }
+        .clock > div{
+            position: absolute;
+            top:0;
+            left:0;
+            bottom:0;
+            right:0;
+            margin:auto;
+        }
+        /* 设置时针——时针转动原理——时针的div是在hour-wrapper的div里面的，实际上的跟随这个div一起转动 */
+        .hour-wrapper{
+            height:65%;
+            width:65%;
+            /*animation: run 43200s linear infinite;       这个是做页面时用css可以直接让时针转动，调用jQuery后就要注释掉    */
+        }
+        .hour{
+            height:138px;
+            width: 8px;
+            background-color: #000;
+            background-position: -5px;
+            margin:0 auto;
+        }
+        .min-wrapper{
+            height:75%;
+            width:75%;
+            /*animation: run 3600s linear infinite;        这个是做页面时用css可以直接让分针转动，调用jQuery后就要注释掉      */
+        }
+        .min{
+            height:155px;
+            width: 5px;
+            background-color: #000;
+            background-position: -15px;
+            margin:0 auto;
+        }
+        .sec-wrapper{
+            height:85%;
+            width:85%;
+            /*animation:run 60s steps(60) infinite;           这个是做页面时用css可以直接让秒针转动，调用jQuery后就要注释掉        */
+        }
+        .sec{
+            height:178px;
+            width: 2px;
+            background-color: #f00;
+            background-position: -30px;
+            margin:0 auto;
+        }
+
+        @keyframes run {
+            from{
+                transform: rotateZ(0deg);
+            }
+            to{
+                transform: rotateZ(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 创建表的容器 -->
+<div class="clock">
+    <div class="hour-wrapper">      <!-- 时针容器：真正旋转的在这个容器，时针只是跟随在上面 -->
+        <div class="hour"></div>     <!-- 时针 -->
+    </div>
+
+    <div class="min-wrapper">
+        <div class="min"></div>      <!-- 分针 -->
+    </div>
+
+    <div class="sec-wrapper">
+        <div class="sec"></div>      <!-- 秒针 -->
+    </div>
+
+</div>
+
+
+<script>
+    $(function(){
+        setInterval(nowtime, 1000);       // 这里只要一个定时器就可以了
+    });
+
+    function nowtime() {
+        var time = new Date();                  // 得到当前时间（含年月日时分秒）
+        var sec = time.getSeconds();
+        var min = time.getMinutes() + time.getSeconds() / 60;
+        var hou = time.getHours() + time.getMinutes() / 60;
+        $('.sec-wrapper').css('transform', 'rotate(' + sec * 6 + 'deg)');     // 让秒针（包裹的div）旋转到当前时间秒数的刻度，1秒=6度
+        $('.min-wrapper').css('transform', 'rotate(' + min * 6 + 'deg)');
+        $('.hour-wrapper').css('transform', 'rotate(' + hou * 30 + 'deg)');
+    }
+</script>
+</body>
+</html>

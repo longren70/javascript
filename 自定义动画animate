@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自定义动画</title>
+    <style>
+        #aaa{width:200px; height:200px;background:red;position:absolute;}
+    </style>
+    <script src="js/jquery3.js"></script>
+</head>
+<body>
+
+<button id="1">点击我后动画开始</button>
+<button id="2">点击我还原</button>
+
+<div id="aaa">我是用于动画显示效果的</div>
+
+<script>
+    // 语法：animate(params,[speed],[easing],[fn])
+    // params--必须传入(属性名可以不带引号，符合属性用驼峰法) speed--毫秒，easing--默认swing，还可以是linear， fn--回调函数
+    $(function(){
+        $("#1").click(function(){
+            $("#aaa").animate({
+                left: 800,
+                top: 600,
+                width: 500,
+                opacity: .4
+            }, 1000);
+        });
+        $("#2").click(function(){
+            $("#aaa").animate({
+                left: 50,
+                top: 50,
+                width: 200,
+                opacity: 1
+            }, 1000);
+        });
+
+    });
+</script>
+
+</body>
+</html>

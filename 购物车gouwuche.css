@@ -1,0 +1,166 @@
+@charset "utf-8";
+/*  这是购物车模块的css  */
+html,body{
+    margin:0;
+    padding:0;}
+body{
+    width:1000px;
+    margin:0 auto;
+}
+a{text-decoration: none;}
+
+.cart-thead{
+    margin:30px 0;
+    background: #cca;
+    width:1000px;
+    height:40px;
+    line-height: 40px;
+}
+.t-checkall{
+    float: left;
+    
+}
+
+.t-goods{
+    float: left;
+    margin: 0px 10px 10px 200px;
+}
+
+.t-price{
+    float: left;
+    margin: 0px 10px 10px 180px;
+}
+
+.t-num{
+    float: left;
+    margin: 0px 10px 10px 80px;
+}
+
+.t-sum{
+    float: left;
+    margin: 0px 10px 10px 80px;
+}
+
+.t-action{
+    float: left;
+    margin: 0px 10px 10px 100px;
+}
+
+.cart-item{
+    width:1000px;
+    height:200px;
+    margin:10px 0;
+    border-bottom: 1px solid #555;
+}
+.cart-item:hover{
+    border:1px solid #1bc;
+    background: rgba(232, 241, 244, 0.7);
+}
+.check-cart-item{
+    border:1px solid #369;
+    background: rgba(244, 224, 178, 0.5);
+}
+.p-img img{
+    width: 80px;
+    height: 80px;
+}
+.p-checkbox{
+    float: left;
+}
+.p-goods{
+    float: left;
+    margin:0 20px;
+}
+.p-img{
+    float: left;
+}
+.p-msg{
+    float: left;
+    width:240px;
+    height:160px;
+    margin:2px 20px;
+}
+.p-price{
+    float: left;
+    margin:2px 20px 2px 70px;
+}
+.p-num{
+    float: left;
+    margin:2px 20px 2px 40px;
+}
+.p-num input{
+    width: 30px;
+    text-align: center;
+}
+.p-sum{
+    float: left;
+    margin:2px 20px 2px 30px;
+}
+.p-action{
+    float: left;
+    margin:2px 20px 2px 75px;
+}
+
+.cart-floatbat{
+    margin:30px 0;
+    background: #cca;
+    width:1000px;
+    height:40px;
+    line-height: 40px;
+}
+.select-all{
+    float: left;
+
+}
+.opration{
+    float: left;
+    margin:0 30px;
+}
+.toobar-right{
+    float: left;
+    margin:0 20px;
+}
+.remove-batch{
+    float: left;
+    margin:0 20px;
+}
+.clear-all{
+    float: left;
+    margin:0 20px;
+}
+.amount-sum{
+    float: left;
+    margin:2px 2px 2px 110px;
+}
+.amount-sum em{
+    margin:2px 8px;
+    color: red;
+}
+.price-sum{
+    float: left;
+    margin:0 20px;
+}
+.price-sum em{
+    margin:2px 8px;
+    color: red;
+}
+.btn-area{
+    float: left;
+    margin:0 0 0 50px;
+    padding:0 16px;
+    background: red;
+    font-size: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

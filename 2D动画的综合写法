@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">   <!-- 要做css的动画，这两个meta就必须要有 -->
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>2d综合写法</title>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            border:1px solid red;
+            margin: 100px auto;
+            background: green;
+            transition: all 1.5s;        //  记住：有旋转的话，就要加上这句代码
+        }
+
+        div:hover{
+            /* 多个动画连写时---用空格隔开，同时有位移和其他属性时，需要把位移放到最前面*/
+            transform: translate(300px,100px) rotate(180deg) scale(1.2);
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="box1"></div>
+
+
+</body>
+</html>
